@@ -1,0 +1,71 @@
+<div class="row product-details">
+    <div class="col-sm-6">
+        <div class="card product-card">
+            <div class="card-body">
+                <div class="card-title text-center">{{product['name']}}</div>
+                <img src="assets/images/dummy-product.png" alt="Card image"
+                    class='img-responsive product-image'>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div>
+            <div class='text-bold'>Description:</div>
+            <p>
+                {{product.description}}
+            </p>
+        </div>
+        <span *ngIf="product['quantity'] > 0; then productIsAvailable; else productOutOfStock"></span>
+        <ng-template #productIsAvailable>
+            <div class='row'>
+                <div class='col-sm-4'>
+                    <div class='text-bold'>Product Available:</div> {{product['quantity']}}
+                </div>
+                <div class='col-sm-4'>
+                    <div class='text-bold'>Price:</div> {{product['price'] | currency: 'USD'}}
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #productOutOfStock>
+            <div class='row'>
+                <div class='col-sm-12 out'>Out Of Stock!</div>
+            </div>
+        </ng-template>
+
+        <div class='row margin-top-10'>
+            <div class='col-sm-12'>
+                <div class='text-center'>
+                    <a *ngIf="isBuy" href='#' class="btn btn-primary" (click)='open(content)'>
+                        <fa name="shopping-cart"></fa> Buy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal class="animated fadeInDown">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Authenticate</h4>
+    </div>
+    <form #paymentForm="ngForm" (ngSubmit)="proceedToBuy(paymentForm.value)">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="pin">Please enter your pin to continue</label>
+                <div class="input-group">
+                    <input type="password" name="pin" class="form-control" maxlength='4' ngModel>
+                </div>
+            </div>
+            <div class='error-text text-center'>{{error}}</div>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-success" value='Proceed to Buy'>
+            <button type="button" class="btn btn-danger" (click)="close()">Cancel</button>
+        </div>
+    </form>
+</ng-template>
+
+<ngb-toast *ngIf="showToast" (hide)="showToast = false" [delay]=5000
+    class="bg-success text-light top-center animated fadeInDown">
+    Order placed successfully!
+</ngb-toast>

@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+@import './constants.less';
+
+html {
+    position  : relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom   : 60px !important;
+    font-family     : 'Source Sans Pro' !important;
+    background-color: @bg-color  !important;
+}
+
+.navbar {
+    background-color: @navbar-color;
+
+    a {
+        color: @white-color;
+
+        &:hover {
+            color: @navbar-text-color;
+        }
+    }
+
+    opacity: 0.9;
+}
+
+.footer {
+    position        : absolute;
+    bottom          : 0;
+    width           : 100%;
+    height          : 50px;
+    line-height     : 50px;
+    background-color: @navbar-color;
+    color           : @white-color  !important;
+    opacity         : 0.8;
+}
+
+.container {
+    width    : auto;
+    max-width: 680px;
+    padding  : 0 15px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.error-text {
+    color    : @error-text-color;
+    font-size: 14px;
+}
+
+.top-center {
+    position: absolute;
+    top     : 10%;
+    left    : 40%;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.product-image {
+    width: 100%;
+}
+
+.dropdown-menu {
+    background-color: @navbar-color  !important;
+
+    a {
+        &:hover {
+            background-color: @navbar-color  !important;
+        }
+    }
+}
+
+.health {
+    font-size: 22px;
+
+    .card {
+        background-color: @card-bg-color;
+        color           : @title-color;
+        height          : 200px;
+
+        .card-body {
+            .row {
+                margin: 10px;
+                border: 1px solid @input-border-color;
+
+                fa {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+.big-text {
+    font-size: 70px;
+}
+
+.active {
+    color: @navbar-text-color !important;
+}
+.out{
+  border: 1px solid red;
+}

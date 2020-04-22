@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-3 product" *ngFor='let product of products'>
+        <a [routerLink]="['/product/', product.id]">
+            <div class="card product-card">
+                <div class="card-body">
+                    <div class="card-title text-center">{{product.name}}</div>
+                    <img src="assets/images/dummy-product.png" alt="Card image"
+                    class='img-responsive product-image'>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
